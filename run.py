@@ -44,8 +44,8 @@ def hello_monkey():
 		
 
 	#Second message
+	message_body = request.values.get('Body')
 	if counter >= 1:
-		message_body = request.values.get('Body')
 		if message_body == 'breakfast':
 			message = "Here's the breakfast menu: " + breakfast
 
