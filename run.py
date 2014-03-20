@@ -17,10 +17,10 @@ def hello_monkey():
 	if from_number in callers:
 		message = callers[from_number] + ", thanks for the message!"
 	else:
-		name = "Thanks for the message!"
+		message = "Thanks for the message!"
 
 	resp = twilio.twiml.Response()
-	resp.sms(messsage)
+	resp.message(message)
 
 	return str(resp)
 	
