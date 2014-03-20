@@ -19,9 +19,7 @@ def hello_monkey():
 		message = "Monkey, thanks for the message!"
 
 	resp = twilio.twiml.Response()
-	with resp.message("Hello, Mobile Monkey") as m:
-		m.media("https://demo.twilio.com/own.png")
-	return str(resp)
+	resp.message(message)
 
 if __name__ == "__main__":
 	app.run(debug=True)
