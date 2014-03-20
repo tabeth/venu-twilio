@@ -21,13 +21,15 @@ def hello_monkey():
 
 	from_number = request.values.get('From', None)
 	if from_number in callers:
-		message = callers[from_number] + ", thanks for the message! As you've requested, here's today's breakfast menu"
+		message = callers[from_number] + ", thanks for the message! As you've requested, here's today's breakfast menu: "
+		message = message + str(breakfast)
 	else:
-		message = "Thanks for the message! As you've requested, here's today's breakfast menu"
-
+		message = "Thanks for the message! As you've requested, here's today's breakfast menu: "
+		message = message + str(breakfast)
+		
 	resp = twilio.twiml.Response()
 	resp.message(message)
-	resp.message(breakfast)
+
 
 	return str(resp)
 	
