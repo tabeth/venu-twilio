@@ -1,0 +1,108 @@
+#-- Reads the Valentine Website and categorizes information --#
+
+import urllib2
+import time
+
+def stripdata(string):
+    # Removes the code from the text.
+    #if ('&lt;br&gt;' in string):
+    string = string.replace('&lt;br&gt;', ',  ')
+    string = string.replace('&amp;', '&')
+    #string = string.replace('<description>', '')
+
+    while ('&lt;' or '&gt;') in string:
+        string =  string[0:string.index('&lt;')] + string[string.index('&gt;')+4:]
+        
+    return(string)
+
+def verifytolist(string):
+    #Verifies the list:
+    grill = 'Grill:'
+    pastry = 'Pastry Selection:'
+    soup = 'Soup:'
+    lighter = 'Lighter Side:'
+    traditional = 'Traditional:'
+    deli = 'Deli:'
+    pasta = 'Pasta:'
+    pizza = 'Pizza:'
+    salad = 'Salads:'
+    bread = 'Pastry and Bread:'
+    checklist = [grill, pastry, soup, lighter, traditional, deli, pasta, pizza, bread, salad]
+    
+    #Takes the string, converts it into a list and parses it
+    lst = string.split(',  ')
+           
+    #The splitting part -> into separate items in list
+    for i in range(len(lst)):
+        for j in range(len(checklist)):
+            if checklist[j] in lst[i]:
+                print(lst[i])
+                temp = lst[i].split(':')
+                #lst[i] = temp
+                print("After")
+                print(lst[i])
+                print(temp)
+                #del lst[i] #Delete item at lst[i]
+                if len(temp) > 0:
+                    for x in range(0, len(temp)):
+                        lst.insert(i, temp[x])
+                lst[i] = checklist[j]
+                continue
+
+        if (('&apos;') in lst[i]):
+            lst[i].replace('&apos;',"'")
+
+    return lst
+  
+def createMenu(menuName):
+    if menuName == 'Breakfast':
+        breakfast = ''
+        rawdata = urllib2.urlopen("http://www3.amherst.edu/intranet/valentine/rss.xml")
+        rawdata = str(rawdata.read())
+        breakfastmenu = rawdata[findIt(rawdata, '<description>', 2):findIt(rawdata, '</description>', 2)]
+        breakfastmenu = stripdata(breakfastmenu)
+        breakfastmenu = verifytolist(breakfastmenu)
+        return breakfastmenu
+
+    if menuName == 'Lunch':
+        lunch = ''
+        rawdata = urllib2.urlopen("http://www3.amherst.edu/intranet/valentine/rss.xml")
+        rawdata = str(rawdata.read())
+        lunchmenu = rawdata[findIt(rawdata, '<description>', 3):findIt(rawdata, '</description>', 3)]
+        lunchmenu = stripdata(lunchmenu)
+        lunchmenu = verifytolist(lunchmenu)
+        return lunchmenu
+    
+    if menuName == 'Dinner':
+        dinner = ''
+        rawdata = urllib2.urlopen("http://www3.amherst.edu/intranet/valentine/rss.xml")
+        rawdata = str(rawdata.read())
+        dinnermenu = rawdata[findIt(rawdata, '<description>', 4):findIt(rawdata, '</description>', 4)]
+        dinnermenu = stripdata(dinnermenu)
+        dinnermenu = verifytolist(dinnermenu)
+        return dinnermenu
+
+def findIt(lst, item, occurence):
+    count = 1
+    totalIndex = 0
+    temp1 = ''
+    temp2 = ''
+
+    if occurence == 1:
+        return lst.index(item)
+
+    while count != occurence:
+        temp1 = '*' * (lst.index(item)+len(item))
+
+        temp2 = lst[(lst.index(item)+len(item)):]
+
+        lst = temp1 + temp2
+        count = count + 1
+        totalIndex = lst.index(item)
+
+    return totalIndex
+    
+
+createMenu("Breakfast")
+createMenu("Lunch")
+createMenu("Dinner")

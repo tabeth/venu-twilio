@@ -1,7 +1,13 @@
 from flask import Flask, request, redirect
 import twilio.twiml
+import valentine
 
 app = Flask(__name__)
+
+#Foods
+breakfast = valentine.createMenu("Breakfast")
+lunch = valentine.createMenu("Lunch")
+dinner = valentine.createMenu("Dinner")
 
 # Add our own number to this list!
 callers = {
@@ -15,12 +21,13 @@ def hello_monkey():
 
 	from_number = request.values.get('From', None)
 	if from_number in callers:
-		message = callers[from_number] + ", thanks for the message!"
+		message = callers[from_number] + ", thanks for the message! As you've requested, here's today's breakfast menu"
 	else:
-		message = "Thanks for the message!"
+		message = "Thanks for the message! As you've requested, here's today's breakfast menu"
 
 	resp = twilio.twiml.Response()
 	resp.message(message)
+	resp.message(breakfast)
 
 	return str(resp)
 	
