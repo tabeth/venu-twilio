@@ -37,10 +37,10 @@ def hello_monkey():
 	from_number = request.values.get('From')
 	if from_number in callers:
 		message = callers[from_number] + ", thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
-		message = message
+		message = message + "Here's a test: " + lunch
 	else:
 		message = "Thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
-		message = message 
+		message = message + "Here's a test: " + lunch
 		
 
 	#Second message
