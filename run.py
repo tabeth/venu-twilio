@@ -39,7 +39,7 @@ def hello_monkey():
 		
 
 	#Second message
-	if counter > 1:
+	if counter >= 1:
 		message_body = request.values.get('Body', None)
 		if message_body in food:
 
