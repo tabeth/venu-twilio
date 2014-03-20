@@ -8,9 +8,9 @@ app.config.from_object(__name__)
 
 #Foods
 
-breakfast = valentine.createMenu('Breakfast')
-lunch = valentine.createMenu('Lunch')
-dinner = valentine.createMenu('Dinner')
+breakfast = str(valentine.createMenu('Breakfast'))
+lunch = str(valentine.createMenu('Lunch'))
+dinner = str(valentine.createMenu('Dinner'))
 
 food = {
 	"breakfast": valentine.createMenu('Breakfast'),
@@ -37,10 +37,8 @@ def hello_monkey():
 	from_number = request.values.get('From')
 	if from_number in callers:
 		message = callers[from_number] + ", thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
-		message = message + "Here's a test: " + lunch
 	else:
 		message = "Thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
-		message = message + "Here's a test: " + lunch
 		
 
 	#Second message
