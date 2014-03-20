@@ -45,15 +45,14 @@ def hello_monkey():
 
 	#Second message
 	message_body = request.values.get('Body')
-	if counter >= 1:
-		if message_body == 'breakfast':
-			message = "Here's the breakfast menu: " + breakfast
+	if message_body == 'breakfast':
+		message = "Here's the breakfast menu: " + breakfast
 
-		elif message_body == 'lunch':
-			message = "Here's the lunch menu: " + lunch
+	elif message_body == 'lunch':
+		message = "Here's the lunch menu: " + lunch
 
-		elif message_body == 'dinner':
-			message = "Here's the dinner menu: " + dinner
+	elif message_body == 'dinner':
+		message = "Here's the dinner menu: " + dinner
 
 	resp = twilio.twiml.Response()
 	resp.message(message)
