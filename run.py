@@ -44,7 +44,7 @@ def hello_monkey():
 		if message_body in food:
 
 			message = "Here's the " + message_body + "menu: "
-		 	+ message_body[food]
+		 	+ food[message_body]
 
 	resp = twilio.twiml.Response()
 	resp.message(message)
