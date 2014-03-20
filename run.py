@@ -7,6 +7,11 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 #Foods
+
+breakfast = valentine.createMenu('Breakfast')
+lunch = valentine.createMenu('Lunch')
+dinner = valentine.createMenu('Dinner')
+
 food = {
 	"breakfast": valentine.createMenu('Breakfast'),
 	"lunch": valentine.createMenu('Lunch'),
@@ -41,10 +46,14 @@ def hello_monkey():
 	#Second message
 	if counter >= 1:
 		message_body = request.values.get('Body', None)
-		if message_body in food:
+		if message_body == 'breakfast':
+			message = "Here's the breakfast menu: " + breakfast
 
-			message = "Here's the " + message_body + "menu: "
-		 	+ food[message_body]
+		elif message_body == 'lunch':
+			message = "Here's the lunch menu: " + lunch
+
+		elif message_body == 'dinner':
+			message = "Here's the dinner menu: " + dinner
 
 	resp = twilio.twiml.Response()
 	resp.message(message)
