@@ -15,6 +15,8 @@ def stripdata(string):
     # Removes the code from the text.
     #if ('&lt;br&gt;' in string):
     string = string.replace('&lt;br&gt;', ',  ')
+
+    string = string.replace('&quot;Pizza &amp; Pasta Bar&quot;', 'Pizza &amp; Pasta Bar')
     string = string.replace('&amp;', '&')
     #string = string.replace('<description>', '')
 
@@ -75,12 +77,12 @@ def verifytolist(string):
 
 
 
-    #Final clean up
-    for a in range(len(checklistlst)):
-        for b in range(len(checklistlst[a])):
-            for c in range(len(checklist)):
-                if checklist[c] in checklistlst[a][b]:
-                    checklistlst[a][b] = checklistlst[a][b].replace(str(checklist[c]) + ' ', '')
+    #Final clean up, erases the indicators , 'Soup:, etc'
+    #for a in range(len(checklistlst)):
+    #   for b in range(len(checklistlst[a])):
+    #       for c in range(len(checklist)):
+    #            if checklist[c] in checklistlst[a][b]:
+    #                checklistlst[a][b] = checklistlst[a][b].replace(str(checklist[c]) + ' ', '')
                 
                                  
 
@@ -117,6 +119,18 @@ def createMenu(menuName):
         return dinnermenu
 
 
+def menu(menuName, number):
+    LIST = createMenu(menuName)
+    themenu = ""
+
+    try:
+        themenu = (", ".join(str(e) for e in LIST[number]))
+        themenu = themenu.replace("'", '')
+
+    except Exception:
+        pass
+
+    return themenu
 
 
 

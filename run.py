@@ -7,9 +7,9 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 #Foods
-breakfast
-lunch
-dinner
+breakfast = ''
+lunch = ''
+dinner = ''
 
 for count in range(10):
 	breakfast += valentine.menu('Breakfast', count)
