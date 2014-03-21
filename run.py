@@ -16,11 +16,6 @@ for count in range(10):
 	lunch += valentine.menu('Lunch', count)
 	dinner += valentine.menu('Dinner', count)
 
-food = {
-	"breakfast": valentine.createMenu('Breakfast'),
-	"lunch": valentine.createMenu('Lunch'),
-	"dinner": valentine.createMenu('Dinner'),
-}
 
 # Add our own number to this list!
 
@@ -36,10 +31,7 @@ def hello_monkey():
 
 	#First message
 	from_number = request.values.get('From')
-	if from_number in callers:
-		message = callers[from_number] + ", thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
-	else:
-		message = "Thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunchor dinner. By the way, you can also just say breakfast, lunch or dinner and I'll immediately text you the specified menu!"
+	message = "Thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunchor dinner. By the way, you can also just say breakfast, lunch or dinner and I'll immediately text you the specified menu!"
 		
 
 	#Second message
