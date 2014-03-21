@@ -7,10 +7,14 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 #Foods
+breakfast
+lunch
+dinner
 
-breakfast = str(valentine.createMenu('Breakfast'))
-lunch = str(valentine.createMenu('Lunch'))
-dinner = str(valentine.createMenu('Dinner'))
+for count in range(10):
+	breakfast += valentine.menu('Breakfast', count)
+	lunch += valentine.menu('Lunch', count)
+	dinner += valentine.menu('Dinner', count)
 
 food = {
 	"breakfast": valentine.createMenu('Breakfast'),
@@ -19,10 +23,7 @@ food = {
 }
 
 # Add our own number to this list!
-callers = {
-	"+14693283305": "Tabeth",
-	"+17814925607": "Rosy",
-}
+
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
@@ -38,7 +39,7 @@ def hello_monkey():
 	if from_number in callers:
 		message = callers[from_number] + ", thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
 	else:
-		message = "Thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunch, dinner, or all for all of them"
+		message = "Thanks for the message! Do you want to know today's menu? Let me know! You can say: breakfast, lunchor dinner. By the way, you can also just say breakfast, lunch or dinner and I'll immediately text you the specified menu!"
 		
 
 	#Second message
