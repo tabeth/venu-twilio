@@ -69,13 +69,13 @@ def hello_monkey():
 
 	#Second message
 	message_body = request.values.get('Body')
-	if message_body.lower() == 'breakfast':
+	if 'breakfast' in message_body.lower():
 		message = todayPhrase + breakfast
 
-	elif message_body.lower() == 'lunch':
+	elif 'lunch' in message_body.lower():
 		message = todayPhrase + lunch
 
-	elif message_body.lower() == 'dinner':
+	elif 'dinner' in message_body.lower():
 		message = todayPhrase + dinner
 
 	resp = twilio.twiml.Response()
