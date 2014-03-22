@@ -13,7 +13,7 @@ lunch = ''
 dinner = ''
 
 #Greeting List
-greeting = {
+greeting = [
 	'Ahoy.',
 	'Good day.',
 	'Greetings for the day.',
@@ -30,12 +30,22 @@ greeting = {
 	"Welcome.",
 	"Yo!",
 	"Sup!",
-}
+]
 
-todayGreeting = greeting[randint(0, len(greeting))]
+phrase = [
+	"I hope the food is good. Here's the menu: ",
+	"Val sucks somethings, but whatevs, here's the menu: ",
+	"Hopefully val is great today, here's the menu: ",
+	"Well, there's always pizza. Here's the menu: ",
+	"I'm hungry. What about you? Here's the menu: ",
+
+]
+
+todayPhrase = phrase[randint(0, len(phrase) - 1)]
+todayGreeting = greeting[randint(0, len(greeting) - 1)]
 
 for count in range(10):
-	breakfast += + " " + valentine.menu('Breakfast', count)
+	breakfast += " " + valentine.menu('Breakfast', count)
 	lunch += " " + valentine.menu('Lunch', count)
 	dinner += " " + valentine.menu('Dinner', count)
 
@@ -60,13 +70,13 @@ def hello_monkey():
 	#Second message
 	message_body = request.values.get('Body')
 	if message_body.lower() == 'breakfast':
-		message = "Here's the breakfast menu: " + breakfast
+		message = todayPhrase + breakfast
 
 	elif message_body.lower() == 'lunch':
-		message = "Here's the lunch menu: " + lunch
+		message = todayPhrase + lunch
 
 	elif message_body.lower() == 'dinner':
-		message = "Here's the dinner menu: " + dinner
+		message = todayPhrase + dinner
 
 	resp = twilio.twiml.Response()
 	resp.message(message)
