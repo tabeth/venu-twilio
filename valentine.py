@@ -2,11 +2,7 @@
 
 import urllib2
 import time
-old = ['grapes', 'banana']
-new = ['apple', 'cheese']
 
-def test():
-    addToList(new, old, 'grapes')
 
 def main():
     createMenu('Breakfast')
@@ -18,6 +14,7 @@ def stripdata(string):
 
     string = string.replace('&quot;Pizza &amp; Pasta Bar&quot;', 'Pizza &amp; Pasta Bar')
     string = string.replace('&amp;', '&')
+    string = string.replace('&apos;', '\'')
     #string = string.replace('<description>', '')
 
     while ('&lt;' or '&gt;') in string:
@@ -88,8 +85,6 @@ def verifytolist(string):
 
     return checklistlst
 
-    
-  
 def createMenu(menuName):
     if menuName == 'Breakfast':
         breakfast = ''
@@ -132,8 +127,6 @@ def menu(menuName, number):
 
     return themenu
 
-
-
 def findIt(lst, item, occurence):
     count = 1
     totalIndex = 0
@@ -154,7 +147,3 @@ def findIt(lst, item, occurence):
 
     return totalIndex
     
-
-
-
-        
