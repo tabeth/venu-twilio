@@ -34,7 +34,7 @@ greeting = [
 
 phrase = [
 	"I hope the food is good. Here's the menu: ",
-	"Val sucks somethings, but whatevs, here's the menu: ",
+	"Val sucks sometimes, but whatevs, here's the menu: ",
 	"Hopefully val is great today, here's the menu: ",
 	"Well, there's always pizza. Here's the menu: ",
 	"I'm hungry. What about you? Here's the menu: ",
