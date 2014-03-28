@@ -3,8 +3,6 @@
 import urllib2
 import time
 
-
-
 def main():
     createMenu('Breakfast')
 
@@ -12,7 +10,6 @@ def stripdata(string):
     # Removes the code from the text.
     #if ('&lt;br&gt;' in string):
     string = string.replace('&lt;br&gt;', ',  ')
-
     string = string.replace('&quot;Pizza &amp; Pasta Bar&quot;', 'Pizza &amp; Pasta Bar')
     string = string.replace('&amp;', '&')
     string = string.replace('&apos;', '\'')
@@ -88,8 +85,7 @@ def verifytolist(string):
 
 def createMenu(menuName):
     if menuName == 'Breakfast':
-        breakfast = ''
-        rawdata = urllib2.urlopen("http://www3.amherst.edu/intranet/valentine/rss.xml")
+        rawdata = urllib2.urlopen("https://www3.amherst.edu/intranet/valentine/rss.xml")
         rawdata = str(rawdata.read())
         breakfastmenu = rawdata[findIt(rawdata, '<description>', 2):findIt(rawdata, '</description>', 2)]
         breakfastmenu = stripdata(breakfastmenu)
@@ -97,8 +93,7 @@ def createMenu(menuName):
         return breakfastmenu
 
     if menuName == 'Lunch':
-        lunch = ''
-        rawdata = urllib2.urlopen("http://www3.amherst.edu/intranet/valentine/rss.xml")
+        rawdata = urllib2.urlopen("https://www3.amherst.edu/intranet/valentine/rss.xml")
         rawdata = str(rawdata.read())
         lunchmenu = rawdata[findIt(rawdata, '<description>', 3):findIt(rawdata, '</description>', 3)]
         lunchmenu = stripdata(lunchmenu)
@@ -106,15 +101,12 @@ def createMenu(menuName):
         return lunchmenu
     
     if menuName == 'Dinner':
-        dinner = ''
-        rawdata = urllib2.urlopen("http://www3.amherst.edu/intranet/valentine/rss.xml")
+        rawdata = urllib2.urlopen("https://www3.amherst.edu/intranet/valentine/rss.xml")
         rawdata = str(rawdata.read())
         dinnermenu = rawdata[findIt(rawdata, '<description>', 4):findIt(rawdata, '</description>', 4)]
         dinnermenu = stripdata(dinnermenu)
         dinnermenu = verifytolist(dinnermenu)
         return dinnermenu
-
-
 
 def menu(menuName, number):
     if menuName == 'Breakfast':
