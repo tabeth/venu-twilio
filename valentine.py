@@ -4,6 +4,7 @@ import urllib2
 import time
 
 
+
 def main():
     createMenu('Breakfast')
 
@@ -114,8 +115,17 @@ def createMenu(menuName):
         return dinnermenu
 
 
+
 def menu(menuName, number):
-    LIST = createMenu(menuName)
+    if menuName == 'Breakfast':
+        LIST = BREAKFAST
+
+    elif menuName == 'Lunch':
+        LIST = LUNCH  
+
+    elif menuName == 'Dinner':
+        LIST = DINNER
+        
     themenu = ""
 
     try:
@@ -146,4 +156,7 @@ def findIt(lst, item, occurence):
         totalIndex = lst.index(item)
 
     return totalIndex
-    
+
+BREAKFAST = createMenu('Breakfast')
+LUNCH = createMenu('Lunch')
+DINNER = createMenu('Dinner')
